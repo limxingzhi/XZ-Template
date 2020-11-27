@@ -1,7 +1,21 @@
 {
-  "name": "xz-template",
-  "version": "0.1.0",
-  "private": true,
+  "name": "cra-template-xz",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Lim Xing Zhi <limxz97@gmail.com",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "template.json",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "cra-template",
+    "template",
+    "typescript",
+    "antd"
+  ],
+  "private": false,
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@testing-library/jest-dom": "^5.11.6",
