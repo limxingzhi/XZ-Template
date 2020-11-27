@@ -12,7 +12,15 @@ This project is a template with the following libraries
 - TypeScript
 - craco instead of react-scripts
 
+# Who is this for
+
+This app skeleton design was loosely based around another design I made for a school project. The motivation originates from the idea where it has to be incredibly easy to add in new functionality. If I were to pick a targeted audience for this, I will say its for students trying to quickly kick start a react project without having to set up a ton of boilerplate code like a navigation bar, routing, TypeScript support, determining how the app strucutre should look like, all that boring stuff.
+
 # Quick Start
+
+Run this command to use it now:
+
+`npx create-react-app your-app-name --template cra-template-xz`
 
 ## Adding a page
 

@@ -1,6 +1,6 @@
 {
   "name": "cra-template-xz",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "license": "MIT",
   "author": "Lim Xing Zhi <limxz97@gmail.com",
   "engines": {
@@ -44,7 +44,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "template": "cp -r craco.config.js src/ public/ tsconfig.json README.md .editorconfig template/ && cp .gitignore template/gitignore"
+    "template": "cp -r craco.config.js src/ public/ tsconfig.json README.md .editorconfig template/ && cp .gitignore template/gitignore",
+    "publish": "npm publish --access public"
   },
   "eslintConfig": {
     "extends": [
