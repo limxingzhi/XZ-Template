@@ -9,6 +9,7 @@ interface NavConfig {
   path: string,
   externalPath?: boolean;
   icon?: IconBaseProps,
+  disabled?: boolean,
 };
 
 interface NavProps {
@@ -33,6 +34,7 @@ const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
             onClick={handleClick(menuItem.key, menuItem.path, menuItem.externalPath)}
             key={menuItem.key}
             icon={menuItem.icon ? menuItem.icon : null}
+            disabled={menuItem.disabled ? true : false}
           >
             {menuItem.title}
           </Menu.Item>);

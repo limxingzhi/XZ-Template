@@ -1,26 +1,17 @@
 import React, { useState } from "react";
-import { MailOutlined } from '@ant-design/icons';
 import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
-import { history } from "./utils";
+import { history } from "../utils";
 import {
   Nav
-} from './components';
-
-import type {
-  NavConfig
-} from './components';
+} from '../components';
 
 import {
   DemoPage,
   DemoTwoPage,
-} from './pages';
+} from '../pages';
 
-const menuConfig: Array<NavConfig> = [
-  { key: 'one', title: 'Click Me', path: './one' },
-  { key: 'two', title: 'Click Me Also', path: './two', icon: <MailOutlined /> },
-  { key: 'three', title: 'external', externalPath: true, path: 'https://google.com' },
-];
+import menuConfig from './menuConfig';
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState('');
