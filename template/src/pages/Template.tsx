@@ -7,11 +7,13 @@ import "./Template.less";
 
 interface Props {
   children: JSX.Element | JSX.Element[],
-  title?: string
+  title?: string,
+  callback?: Function | undefined,
 }
 
-const Template: React.FC<Props> = ({ children, title = "" }) => {
+const Template: React.FC<Props> = ({ children, title = "", callback }) => {
   if (title) document.title = title;
+  if (callback) callback();
   return (
     <>
       <PageHeader title={title} className="page-template-header" />
