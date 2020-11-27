@@ -43,7 +43,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "template": "cp -r craco.config.js src/ public/ tsconfig.json README.md .editorconfig template/ && cp .gitignore template/gitignore"
   },
   "eslintConfig": {
     "extends": [
