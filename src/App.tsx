@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MailOutlined } from '@ant-design/icons';
 import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
@@ -23,16 +23,20 @@ const menuConfig: Array<NavConfig> = [
 ];
 
 const App = () => {
+  const [currentTab, setCurrentTab] = useState('');
+  const changeCurrentTab = (tabKey: string) => () => {
+    setCurrentTab(tabKey);
+  }
   return (
     <>
-      <Nav config={menuConfig} currentTab={menuConfig[0].key} />
+      <Nav config={menuConfig} currentTab={currentTab} />
       <Router history={history}>
         <Switch>
           <Route path="/one">
-            <DemoPage />
+            <DemoPage callback={changeCurrentTab('one')}/>
           </Route>
           <Route path="/two">
-            <DemoTwoPage />
+            <DemoTwoPage callback={changeCurrentTab('two')}/>
           </Route>
           <Route exact path="/">
             <Redirect to="/one" />
