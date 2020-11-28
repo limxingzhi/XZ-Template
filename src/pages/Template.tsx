@@ -4,6 +4,9 @@ import {
   Skeleton,
 } from "antd";
 import "./Template.less";
+import {
+  changeDocumentTitle
+} from '../utils';
 
 interface Props {
   children: JSX.Element | JSX.Element[],
@@ -12,7 +15,7 @@ interface Props {
 }
 
 const Template: React.FC<Props> = ({ children, title = "", callback }) => {
-  if (title) document.title = title;
+  if (title !== '') changeDocumentTitle(title);
   if (callback) callback();
   return (
     <div className="page-template">
