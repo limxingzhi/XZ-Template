@@ -2,4 +2,11 @@ import { createBrowserHistory } from "history";
 
 const history = createBrowserHistory();
 
-export { history };
+const changeDocumentTitle = (newTitle: string, showTag: boolean = true): void => {
+  document.title = newTitle + ((showTag) ? ` - XZ Template` : ``);
+}
+
+export {
+  history,
+  changeDocumentTitle,
+};

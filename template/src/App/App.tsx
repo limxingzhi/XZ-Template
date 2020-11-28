@@ -3,7 +3,7 @@ import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { history } from "../utils";
 import {
-  Nav
+  Layout
 } from '../components';
 
 import {
@@ -11,7 +11,9 @@ import {
   DemoTwoPage,
 } from '../pages';
 
-import menuConfig from './menuConfig';
+import {
+  tabConfig,
+} from './navConfig';
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState('');
@@ -20,20 +22,26 @@ const App = () => {
   }
   return (
     <>
-      <Nav config={menuConfig} currentTab={currentTab} />
-      <Router history={history}>
-        <Switch>
-          <Route path="/one">
-            <DemoPage callback={changeCurrentTab('one')}/>
-          </Route>
-          <Route path="/two">
-            <DemoTwoPage callback={changeCurrentTab('two')}/>
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/one" />
-          </Route>
-        </Switch>
-      </Router>
+      <Layout
+        branding="Xing Zhi's Template"
+        // brandingImageURL=""
+        tabItems={tabConfig}
+        currentTab={currentTab}
+      >
+        <Router history={history}>
+          <Switch>
+            <Route path="/one">
+              <DemoPage callback={changeCurrentTab('one')} />
+            </Route>
+            <Route path="/two">
+              <DemoTwoPage callback={changeCurrentTab('two')} />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/one" />
+            </Route>
+          </Switch>
+        </Router>
+      </Layout>
     </>
   );
 };
