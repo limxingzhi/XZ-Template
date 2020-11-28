@@ -1,6 +1,6 @@
 import Nav from './Nav/Nav';
 import type {
-  NavConfig,
+  TabConfig,
 } from './Nav/Nav';
 
 export {
@@ -8,5 +8,5 @@ export {
 };
 
 export type {
-  NavConfig,
+  TabConfig,
 }

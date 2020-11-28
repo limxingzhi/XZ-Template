@@ -15,12 +15,12 @@ const Template: React.FC<Props> = ({ children, title = "", callback }) => {
   if (title) document.title = title;
   if (callback) callback();
   return (
-    <>
+    <div className="page-template">
       <PageHeader title={title} className="page-template-header" />
-      <div className="page-template-container">
+      <div className="page-template__container">
         <Suspense fallback={<Skeleton active />}>{children}</Suspense>
       </div>
-    </>
+    </div>
   );
 };
 

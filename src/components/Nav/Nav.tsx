@@ -1,9 +1,10 @@
 import React, { EventHandler } from "react";
-import { Menu, } from "antd";
+import { Menu } from "antd";
 import { history } from "../../utils";
 import { IconBaseProps } from "@ant-design/icons/lib/components/Icon";
+import './Nav.less';
 
-interface NavConfig {
+interface TabConfig {
   key: string,
   title: string,
   path: string,
@@ -13,11 +14,12 @@ interface NavConfig {
 };
 
 interface NavProps {
-  config: Array<NavConfig>
+  branding: string,
+  tabItems: Array<TabConfig>
   currentTab?: string
 };
 
-const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
+const Nav: React.FC<NavProps> = ({ branding, tabItems, currentTab = "" }) => {
   const handleClick = (key: string, path: string, externalPath: boolean = false): EventHandler<any> => (e: MouseEvent): void => {
     if (!externalPath) {
       history.push(path);
@@ -27,16 +29,17 @@ const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
   };
 
   return (
-    <Menu selectedKeys={[currentTab]} mode="horizontal">
-      {config.map((menuItem: NavConfig) => {
+    <Menu selectedKeys={[currentTab]} mode="horizontal" className="nav">
+      <span className="nav__branding">{branding}</span>
+      {tabItems.map((tabItem: TabConfig) => {
         return (
           <Menu.Item
-            onClick={handleClick(menuItem.key, menuItem.path, menuItem.externalPath)}
-            key={menuItem.key}
-            icon={menuItem.icon ? menuItem.icon : null}
-            disabled={menuItem.disabled ? true : false}
+            onClick={handleClick(tabItem.key, tabItem.path, tabItem.externalPath)}
+            key={tabItem.key}
+            icon={tabItem.icon ? tabItem.icon : null}
+            disabled={tabItem.disabled ? true : false}
           >
-            {menuItem.title}
+            {tabItem.title}
           </Menu.Item>);
       })}
     </Menu>
@@ -44,4 +47,4 @@ const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
 };
 
 export default Nav;
-export type { NavConfig };
+export type { TabConfig };

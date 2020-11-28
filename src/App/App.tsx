@@ -11,7 +11,9 @@ import {
   DemoTwoPage,
 } from '../pages';
 
-import menuConfig from './menuConfig';
+import {
+  tabConfig,
+} from './navConfig';
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState('');
@@ -20,7 +22,7 @@ const App = () => {
   }
   return (
     <>
-      <Nav config={menuConfig} currentTab={currentTab} />
+      <Nav branding="Xing Zhi's Template" tabItems={tabConfig} currentTab={currentTab} />
       <Router history={history}>
         <Switch>
           <Route path="/one">
