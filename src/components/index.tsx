@@ -1,12 +1,12 @@
-import Nav from './Nav/Nav';
+import Layout from './Layout/Layout';
 import type {
-  NavConfig,
-} from './Nav/Nav';
+  TabConfig,
+} from './Layout/Layout';
 
 export {
-  Nav,
+  Layout,
 };
 
 export type {
-  NavConfig,
+  TabConfig,
 }

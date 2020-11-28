@@ -1,18 +1,26 @@
 import React, { lazy } from 'react';
 import Template from './Template';
 
+interface PageProps {
+  callback?: Function,
+}
+
 const Demo = lazy(() => import('./DemoPage/DemoPage'));
 const DemoTwo = lazy(() => import('./DemoTwoPage/DemoTwoPage'));
 
-const DemoPage = () => <Template title="This is page one">
-  <Demo />
-</Template>;
+const DemoPage: React.FC<PageProps> = ({ callback }) => (
+  <Template title="This is page one" callback={callback}>
+    <Demo />
+  </Template>
+);
 
-const DemoTwoPage = () => <Template title="I am page two">
-  <DemoTwo />
-</Template>;
+const DemoTwoPage: React.FC<PageProps> = ({ callback }) => (
+  <Template title="I am page two" callback={callback}>
+    <DemoTwo />
+  </Template>
+);
 
 export {
   DemoPage,
   DemoTwoPage,
- };
+};

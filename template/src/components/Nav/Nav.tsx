@@ -1,4 +1,4 @@
-import React, { EventHandler, useState } from "react";
+import React, { EventHandler } from "react";
 import { Menu, } from "antd";
 import { history } from "../../utils";
 import { IconBaseProps } from "@ant-design/icons/lib/components/Icon";
@@ -9,6 +9,7 @@ interface NavConfig {
   path: string,
   externalPath?: boolean;
   icon?: IconBaseProps,
+  disabled?: boolean,
 };
 
 interface NavProps {
@@ -17,11 +18,8 @@ interface NavProps {
 };
 
 const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
-  const [current, setCurrent] = useState(currentTab);
-
   const handleClick = (key: string, path: string, externalPath: boolean = false): EventHandler<any> => (e: MouseEvent): void => {
     if (!externalPath) {
-      setCurrent(key);
       history.push(path);
     } else {
       window.open(path, '_blank', 'noopener');
@@ -29,13 +27,14 @@ const Nav: React.FC<NavProps> = ({ config, currentTab = "" }) => {
   };
 
   return (
-    <Menu selectedKeys={[current]} mode="horizontal">
+    <Menu selectedKeys={[currentTab]} mode="horizontal">
       {config.map((menuItem: NavConfig) => {
         return (
           <Menu.Item
             onClick={handleClick(menuItem.key, menuItem.path, menuItem.externalPath)}
             key={menuItem.key}
             icon={menuItem.icon ? menuItem.icon : null}
+            disabled={menuItem.disabled ? true : false}
           >
             {menuItem.title}
           </Menu.Item>);
