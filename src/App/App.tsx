@@ -3,7 +3,8 @@ import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { history } from "../utils";
 import {
-  Layout
+  Layout,
+  MySubMenu,
 } from '../components';
 
 import {
@@ -27,6 +28,8 @@ const App = () => {
         // brandingImageURL=""
         tabItems={tabConfig}
         currentTab={currentTab}
+        // removing this will remove the sider and collapse btn
+        siderMenu={<MySubMenu />}
       >
         <Router history={history}>
           <Switch>
