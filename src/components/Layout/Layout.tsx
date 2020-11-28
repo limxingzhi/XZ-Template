@@ -21,12 +21,17 @@ interface TabConfig {
 
 interface NavProps {
   branding: string,
+  brandingImageURL?: string,
   tabItems: Array<TabConfig>,
   children?: JSX.Element | JSX.Element[],
   currentTab?: string
 };
 
-const Layout: React.FC<NavProps> = ({ children, branding, tabItems, currentTab = "" }) => {
+const Layout: React.FC<NavProps> = ({ brandingImageURL, children, branding, tabItems, currentTab = "" }) => {
+  const brandingItem = (brandingImageURL)
+    ? <img className="ant-menu-item nav__branding-img" src={brandingImageURL} alt={branding} />
+    : <span className="nav__branding">{branding}</span>;
+
   const handleClick = (key: string, path: string, externalPath: boolean = false): EventHandler<any> => (e: MouseEvent): void => {
     if (!externalPath) {
       history.push(path);
@@ -40,7 +45,7 @@ const Layout: React.FC<NavProps> = ({ children, branding, tabItems, currentTab =
       <Header>
         <Menu theme="dark" selectedKeys={[currentTab]} mode="horizontal">
           <Space size="large">
-            <span className="nav__branding">{branding}</span>
+            {brandingItem}
             <span />
           </Space>
           {

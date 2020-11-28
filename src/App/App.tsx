@@ -22,7 +22,12 @@ const App = () => {
   }
   return (
     <>
-      <Layout branding="Xing Zhi's Template" tabItems={tabConfig} currentTab={currentTab}>
+      <Layout
+        branding="Xing Zhi's Template"
+        // brandingImageURL=""
+        tabItems={tabConfig}
+        currentTab={currentTab}
+      >
         <Router history={history}>
           <Switch>
             <Route path="/one">
