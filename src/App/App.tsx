@@ -3,7 +3,7 @@ import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { history } from "../utils";
 import {
-  Nav
+  Layout
 } from '../components';
 
 import {
@@ -22,20 +22,21 @@ const App = () => {
   }
   return (
     <>
-      <Nav branding="Xing Zhi's Template" tabItems={tabConfig} currentTab={currentTab} />
-      <Router history={history}>
-        <Switch>
-          <Route path="/one">
-            <DemoPage callback={changeCurrentTab('one')}/>
-          </Route>
-          <Route path="/two">
-            <DemoTwoPage callback={changeCurrentTab('two')}/>
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/one" />
-          </Route>
-        </Switch>
-      </Router>
+      <Layout branding="Xing Zhi's Template" tabItems={tabConfig} currentTab={currentTab}>
+        <Router history={history}>
+          <Switch>
+            <Route path="/one">
+              <DemoPage callback={changeCurrentTab('one')} />
+            </Route>
+            <Route path="/two">
+              <DemoTwoPage callback={changeCurrentTab('two')} />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/one" />
+            </Route>
+          </Switch>
+        </Router>
+      </Layout>
     </>
   );
 };

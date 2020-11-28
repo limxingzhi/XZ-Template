@@ -9,7 +9,7 @@ const tabConfig: Array<TabConfig> = [
   { key: 'one', title: 'Click Me', path: './one' },
   { key: 'two', title: 'Click Me Also', path: './two', icon: <MailOutlined /> },
   { key: 'three', title: 'external', externalPath: true, path: 'https://google.com' },
-  { key: 'foru', title: 'Disabled', path: './one', disabled: true },
+  { key: 'four', title: 'Disabled', path: './one', disabled: true },
 ];
 
 export {

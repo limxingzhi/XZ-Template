@@ -1,10 +1,10 @@
-import Nav from './Nav/Nav';
+import Layout from './Layout/Layout';
 import type {
   TabConfig,
-} from './Nav/Nav';
+} from './Layout/Layout';
 
 export {
-  Nav,
+  Layout,
 };
 
 export type {
