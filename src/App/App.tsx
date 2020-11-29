@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
+import 'normalize.css';
 import { history } from "../utils";
 import {
   Layout,
@@ -14,7 +15,7 @@ import {
 
 import {
   tabConfig,
-} from './navConfig';
+} from './tabConfig';
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState('');
