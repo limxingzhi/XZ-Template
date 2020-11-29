@@ -76,16 +76,11 @@ const Layout: React.FC<LayoutProps> = ({ siderMenu, brandingImageURL, children, 
               overflowX: 'hidden',
             }}
           >
-            {
-              siderMenu
-                ?
-                <div className="nav__sider--btn">
-                  <Button type="default" onClick={siderCollapseHandler}>
-                    {siderCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                  </Button>
-                </div>
-                : null
-            }
+            <div className="nav__sider--btn">
+              <Button type="default" onClick={siderCollapseHandler}>
+                {siderCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              </Button>
+            </div>
             {siderMenu}
           </Menu>
         </Sider>
