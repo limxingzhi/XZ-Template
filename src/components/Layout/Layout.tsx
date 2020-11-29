@@ -20,22 +20,23 @@ const { Header, Content, Sider } = AntLayout;
 interface TabConfig {
   key: string,
   title: string,
-  path: string,
+  path?: string,
   externalPath?: boolean;
   icon?: IconBaseProps,
   disabled?: boolean,
+  callback?: Function,
 };
 
-interface NavProps {
+interface LayoutProps {
   branding: string,
   brandingImageURL?: string,
-  tabItems: Array<TabConfig>,
+  tabItems?: Array<TabConfig>,
   children?: JSX.Element | JSX.Element[],
   siderMenu?: JSX.Element | JSX.Element[],
   currentTab?: string
 };
 
-const Layout: React.FC<NavProps> = ({ siderMenu, brandingImageURL, children, branding, tabItems, currentTab = "" }) => {
+const Layout: React.FC<LayoutProps> = ({ siderMenu, brandingImageURL, children, branding, tabItems = [], currentTab = "" }) => {
   const [siderCollapse, setSiderCollapse] = useState(true);
   const brandingItem = (brandingImageURL)
     ? <img className="ant-menu-item nav__branding-img" src={brandingImageURL} alt={branding} />
@@ -45,10 +46,18 @@ const Layout: React.FC<NavProps> = ({ siderMenu, brandingImageURL, children, bra
     setSiderCollapse(!siderCollapse);
   }
 
-  const handleTabClick = (key: string, path: string, externalPath: boolean = false): EventHandler<any> => (e: MouseEvent): void => {
-    if (!externalPath) {
+  const handleTabClick = (
+    key: string,
+    path: string | undefined,
+    externalPath: boolean = false,
+    callback?: Function
+  ): EventHandler<any> => (e: MouseEvent): void => {
+    if (callback) {
+      callback();
+    }
+    if (!externalPath && path) {
       history.push(path);
-    } else {
+    } else if (path) {
       window.open(path, '_blank', 'noopener');
     }
   };
@@ -93,7 +102,12 @@ const Layout: React.FC<NavProps> = ({ siderMenu, brandingImageURL, children, bra
             {
               tabItems.map((tabItem: TabConfig) => (
                 <Menu.Item
-                  onClick={handleTabClick(tabItem.key, tabItem.path, tabItem.externalPath)}
+                  onClick={handleTabClick(
+                    tabItem.key,
+                    tabItem.path,
+                    tabItem.externalPath,
+                    tabItem.callback,
+                  )}
                   key={tabItem.key}
                   icon={tabItem.icon ? tabItem.icon : null}
                   disabled={tabItem.disabled ? true : false}

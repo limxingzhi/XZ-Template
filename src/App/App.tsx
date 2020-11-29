@@ -15,7 +15,7 @@ import {
 
 import {
   tabConfig,
-} from './navConfig';
+} from './tabConfig';
 
 const App = () => {
   const [currentTab, setCurrentTab] = useState('');
