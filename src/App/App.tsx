@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
+import 'normalize.css';
 import { history } from "../utils";
 import {
   Layout,

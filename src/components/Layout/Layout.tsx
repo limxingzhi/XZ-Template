@@ -67,23 +67,26 @@ const Layout: React.FC<NavProps> = ({ siderMenu, brandingImageURL, children, bra
               overflowX: 'hidden',
             }}
           >
+            {
+              siderMenu
+                ?
+                <div className="nav__sider--btn">
+                  <Button type="default" onClick={siderCollapseHandler}>
+                    {siderCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                  </Button>
+                </div>
+                : null
+            }
             {siderMenu}
           </Menu>
         </Sider>
         : null
       }
       <AntLayout>
-        <Header style={{ width: '100%', padding: 0, margin: 0 }}>
+        <Header style={{ width: '100%', padding: 0, margin: 0, position: 'sticky' }}>
           <Menu selectedKeys={[currentTab]} mode="horizontal">
             <Space size="large">
               <span />
-              {
-                siderMenu
-                  ? <Button type="default" onClick={siderCollapseHandler}>
-                    {siderCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                  </Button>
-                  : null
-              }
               {brandingItem}
               <span />
             </Space>
