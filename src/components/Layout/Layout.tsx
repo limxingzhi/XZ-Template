@@ -40,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({ siderMenu, brandingImageURL, children, 
   const [siderCollapse, setSiderCollapse] = useState(true);
   const brandingItem = (brandingImageURL)
     ? <img className="ant-menu-item nav__branding-img" src={brandingImageURL} alt={branding} />
-    : <Title level={4} className="nav__branding">{branding}</Title>;
+    : <Title level={4}>{branding}</Title>;
 
   const siderCollapseHandler = (): void => {
     setSiderCollapse(!siderCollapse);
@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({ siderMenu, brandingImageURL, children, 
             }}
           >
             <div className="nav__sider--btn">
-              <Button type="default" onClick={siderCollapseHandler}>
+              <Button type="text" onClick={siderCollapseHandler}>
                 {siderCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               </Button>
             </div>
@@ -88,12 +88,10 @@ const Layout: React.FC<LayoutProps> = ({ siderMenu, brandingImageURL, children, 
       }
       <AntLayout>
         <Header style={{ width: '100%', padding: 0, margin: 0, position: 'sticky' }}>
+          <Space className="nav__branding" size="large">
+            {brandingItem}
+          </Space>
           <Menu selectedKeys={[currentTab]} mode="horizontal">
-            <Space size="large">
-              <span />
-              {brandingItem}
-              <span />
-            </Space>
             {
               tabItems.map((tabItem: TabConfig) => (
                 <Menu.Item
