@@ -9,7 +9,7 @@ const Demo = lazy(() => import('./DemoPage/DemoPage'));
 const DemoTwo = lazy(() => import('./DemoTwoPage/DemoTwoPage'));
 
 const DemoPage: React.FC<PageProps> = ({ callback }) => (
-  <Template title="This is page one" callback={callback}>
+  <Template title="Welcome" callback={callback}>
     <Demo />
   </Template>
 );
