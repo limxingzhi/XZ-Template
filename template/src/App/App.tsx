@@ -30,7 +30,7 @@ const App = () => {
         tabItems={tabConfig}
         currentTab={currentTab}
         // removing this will remove the sider and collapse btn
-        siderMenu={<MySubMenu />}
+        siderMenu={MySubMenu}
       >
         <Router history={history}>
           <Switch>
