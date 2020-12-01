@@ -11,16 +11,18 @@ import {
 interface Props {
   children: JSX.Element | JSX.Element[],
   title?: string,
-  callback?: Function | undefined,
+  renderCallback?: Function | undefined,
+  mountedCallback?: Function | undefined,
 }
 
-const Template: React.FC<Props> = ({ children, title = "", callback }) => {
+const Template: React.FC<Props> = ({ children, title = "", renderCallback, mountedCallback }) => {
   useEffect(()=> {
-    if (callback) callback();
+    if (mountedCallback) mountedCallback();
   });
   useEffect(()=> {
     if (title !== '') changeDocumentTitle(title);
-  }, [title, children, callback]);
+    if (renderCallback) renderCallback();
+  }, [title, children, renderCallback, mountedCallback]);
   return (
     <div className="page-template">
       <PageHeader title={title} className="page-template-header" />

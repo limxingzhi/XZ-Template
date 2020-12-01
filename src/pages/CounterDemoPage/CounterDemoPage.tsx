@@ -14,7 +14,7 @@ import {
   counterSlice,
 } from '../../redux/counter';
 
-const DemoTwoPage: React.FC = () => {
+const CounterDemoPage: React.FC = () => {
   const updateReduxState = (increment: 'increase' | 'decrease' | 'reset') => {
     if (increment === 'increase')
       store.dispatch(counterSlice.actions.increment({ value: 1 }));
@@ -33,4 +33,4 @@ const DemoTwoPage: React.FC = () => {
   </div>);
 }
 
-export default DemoTwoPage;
+export default CounterDemoPage;
