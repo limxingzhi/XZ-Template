@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "antd/dist/antd.less";
 import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux';
 import 'normalize.css';
 import { history } from "../utils";
+import { store } from '../redux/counter';
 import {
   Layout,
   MySubMenu,
@@ -24,28 +26,30 @@ const App = () => {
   }
   return (
     <>
-      <Layout
-        branding="Xing Zhi's Template"
-        // brandingImageURL=""
-        tabItems={tabConfig}
-        currentTab={currentTab}
-        // removing this will remove the sider and collapse btn
-        siderMenu={MySubMenu}
-      >
-        <Router history={history}>
-          <Switch>
-            <Route path="/one">
-              <DemoPage callback={changeCurrentTab('one')} />
-            </Route>
-            <Route path="/two">
-              <DemoTwoPage callback={changeCurrentTab('two')} />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/one" />
-            </Route>
-          </Switch>
-        </Router>
-      </Layout>
+      <Provider store={store}>
+        <Layout
+          branding="Xing Zhi's Template"
+          // brandingImageURL=""
+          tabItems={tabConfig}
+          currentTab={currentTab}
+          // removing this will remove the sider and collapse btn
+          siderMenu={MySubMenu}
+        >
+          <Router history={history}>
+            <Switch>
+              <Route path="/one">
+                <DemoPage callback={changeCurrentTab('one')} />
+              </Route>
+              <Route path="/two">
+                <DemoTwoPage callback={changeCurrentTab('two')} />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/one" />
+              </Route>
+            </Switch>
+          </Router>
+        </Layout>
+      </Provider>
     </>
   );
 };
