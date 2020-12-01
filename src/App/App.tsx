@@ -12,7 +12,7 @@ import {
 
 import {
   DemoPage,
-  DemoTwoPage,
+  CounterDemoPage,
 } from '../pages';
 
 import {
@@ -41,7 +41,7 @@ const App = () => {
                 <DemoPage callback={changeCurrentTab('one')} />
               </Route>
               <Route path="/two">
-                <DemoTwoPage callback={changeCurrentTab('two')} />
+                <CounterDemoPage callback={changeCurrentTab('two')} />
               </Route>
               <Route exact path="/">
                 <Redirect to="/one" />

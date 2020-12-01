@@ -6,7 +6,7 @@ interface PageProps {
 }
 
 const Demo = lazy(() => import('./DemoPage/DemoPage'));
-const DemoTwo = lazy(() => import('./DemoTwoPage/DemoTwoPage'));
+const CounterDemo = lazy(() => import('./CounterDemoPage/CounterDemoPage'));
 
 const DemoPage: React.FC<PageProps> = ({ callback }) => (
   <Template title="Welcome" callback={callback}>
@@ -14,13 +14,13 @@ const DemoPage: React.FC<PageProps> = ({ callback }) => (
   </Template>
 );
 
-const DemoTwoPage: React.FC<PageProps> = ({ callback }) => (
+const CounterDemoPage: React.FC<PageProps> = ({ callback }) => (
   <Template title="I am page two" callback={callback}>
-    <DemoTwo />
+    <CounterDemo />
   </Template>
 );
 
 export {
   DemoPage,
-  DemoTwoPage,
+  CounterDemoPage,
 };
