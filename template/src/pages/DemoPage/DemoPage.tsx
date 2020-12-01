@@ -18,7 +18,7 @@ const DemoPage: React.FC = () => <div>
   <Divider />
   <Title level={1}>Motivation</Title>
   <Paragraph>This app skeleton design was loosely based around another design I made for a school project. It originates from the idea where it has to be incredibly easy to add in new functionality. If I were to pick a targeted audience for this, I will say its for students trying to quickly kick start a react project without having to set up a ton of boilerplate code like a navigation bar, routing, TypeScript support, determining how the app strucutre should look like, all that boring stuff.</Paragraph>
-  <Paragraph>The only thing not pre-configured is global state management.</Paragraph>
+  <Paragraph>State management is also pre-configured with redux toolkit.</Paragraph>
   <Divider />
   <Title level={1}>App Skeleton Usage - Page VS Component</Title>
   <Paragraph>In theory, page components are meant to act as wrappers. You can do data fetching or state management here and pass them to your React Components as reactive props. You can do routes specific functionality here too, like interacting with SessionStorage or logging or analytics. The components more or less act as a traditional react components.</Paragraph>
