@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import {
   PageHeader,
   Skeleton,
@@ -15,8 +15,12 @@ interface Props {
 }
 
 const Template: React.FC<Props> = ({ children, title = "", callback }) => {
-  if (title !== '') changeDocumentTitle(title);
-  if (callback) callback();
+  useEffect(()=> {
+    if (callback) callback();
+  });
+  useEffect(()=> {
+    if (title !== '') changeDocumentTitle(title);
+  }, [title, children, callback]);
   return (
     <div className="page-template">
       <PageHeader title={title} className="page-template-header" />
