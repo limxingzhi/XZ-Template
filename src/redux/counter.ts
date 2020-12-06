@@ -3,21 +3,26 @@ import {
   configureStore
 } from '@reduxjs/toolkit';
 
+interface appState {
+  count: number
+};
+
+const defaultState = {
+  count: 0,
+};
+
 const counterSlice = createSlice({
   name: 'counter',
-  initialState: 0,
+  initialState: defaultState,
   reducers: {
-    increment: (state, action) => {
-      const value =  action.payload.value ?? 1;
-      state += value;
+    increment: (state: appState, action) => {
+      state.count += action.payload.value ?? 0;
       return state;
     },
-    decrement : (state, action) => {
-      const value =  action.payload.value ?? 1;
-      state -= value;
+    reset: (state: appState) => {
+      state.count = 0;
       return state;
     },
-    reset: state => 0,
   }
 });
 
@@ -29,3 +34,7 @@ export {
   store,
   counterSlice,
 };
+
+export type {
+  appState,
+}
