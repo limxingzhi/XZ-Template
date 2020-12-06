@@ -38,10 +38,10 @@ const App = () => {
           <Router history={history}>
             <Switch>
               <Route path="/one">
-                <DemoPage callback={changeCurrentTab('one')} />
+                <DemoPage mountCallback={changeCurrentTab('one')} />
               </Route>
               <Route path="/two">
-                <CounterDemoPage callback={changeCurrentTab('two')} />
+                <CounterDemoPage mountCallback={changeCurrentTab('two')} />
               </Route>
               <Route exact path="/">
                 <Redirect to="/one" />
