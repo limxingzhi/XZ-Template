@@ -12,19 +12,18 @@ import {
 import {
   store,
   counterSlice,
+  appState,
 } from '../../redux/counter';
 
 const CounterDemoPage: React.FC = () => {
-  const updateReduxState = (increment: 'increase' | 'decrease' | 'reset') => {
-    if (increment === 'increase')
-      store.dispatch(counterSlice.actions.increment({ value: 1 }));
-    else if (increment === 'decrease')
-      store.dispatch(counterSlice.actions.decrement({ value: 1 }));
-    else if (increment === 'reset')
+  const updateReduxState = (value: number = 0, reset:boolean = false) => {
+    if (reset)
       store.dispatch(counterSlice.actions.reset());
+    else
+      store.dispatch(counterSlice.actions.increment({ value: value }));
   }
   return (<div>
-    <Badge count={useSelector(state => state)}>
+    <Badge count={useSelector((state: appState) => state.count)}>
       <Alert message="Redux is pre-configured with redux-toolkit" type="info"></Alert>
     </Badge>
     <br />
