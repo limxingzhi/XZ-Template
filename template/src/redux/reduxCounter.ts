@@ -33,6 +33,7 @@ const store = configureStore({
 export {
   store,
   counterSlice,
+  defaultState,
 };
 
 export type {
