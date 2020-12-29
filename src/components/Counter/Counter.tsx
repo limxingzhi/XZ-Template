@@ -32,8 +32,8 @@ const Counter: React.FC<CounterProps> = ({ countChangeFunction }) => {
     <Card title="Redux Counter" className="counter__card" style={{ width: 200 }} hoverable>
       <Space size="large">
         <Space size="small">
-          <Button onClick={incrementHandler(1)} size="small" shape="circle"><CaretUpOutlined /></Button>
-          <Button onClick={incrementHandler(-1)} size="small" shape="circle"><CaretDownOutlined /></Button>
+          <Button data-testid="increment-click" onClick={incrementHandler(1)} size="small" shape="circle"><CaretUpOutlined /></Button>
+          <Button data-testid="decrement-click" onClick={incrementHandler(-1)} size="small" shape="circle"><CaretDownOutlined /></Button>
         </Space>
         <Button onClick={resetHandler} size="small" >Reset</Button>
       </Space>
