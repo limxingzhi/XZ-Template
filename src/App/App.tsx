@@ -4,7 +4,7 @@ import { Router, Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from 'react-redux';
 import 'normalize.css';
 import { history } from "../utils";
-import { store } from '../redux/counter';
+import { store } from '../redux/reduxCounter';
 import {
   Layout,
   MySubMenu,

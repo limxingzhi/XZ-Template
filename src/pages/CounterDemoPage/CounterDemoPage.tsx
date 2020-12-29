@@ -13,7 +13,7 @@ import {
   store,
   counterSlice,
   appState,
-} from '../../redux/counter';
+} from '../../redux/reduxCounter';
 
 const CounterDemoPage: React.FC = () => {
   const updateReduxState = (value: number = 0, reset:boolean = false) => {

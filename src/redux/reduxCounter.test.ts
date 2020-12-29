@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import { counterSlice, defaultState } from './counter';
+import { counterSlice, defaultState } from './reduxCounter';
 
 const mockStore = configureStore();
 const store = mockStore();
