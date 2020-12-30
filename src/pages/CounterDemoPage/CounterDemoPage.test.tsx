@@ -6,7 +6,6 @@ import React from 'react';
 import { unmountComponentAtNode, render } from "react-dom";
 import TestRenderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import { act } from "react-dom/test-utils";
 import { waitFor } from "@testing-library/react";
 import { counterSlice, store } from '../../redux/reduxCounter';
 import { Badge } from 'antd';
