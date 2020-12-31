@@ -9,6 +9,13 @@ const {
   Title,
 } = Typography;
 
+
+/**
+ * This page contains a brunch of text explaining how to use the component
+ *
+ * @category Pages
+ * @component
+ */
 const DemoPage: React.FC = () => <div>
   <Paragraph>This page is loaded in.</Paragraph>
   <Title level={1}>Configuration</Title>

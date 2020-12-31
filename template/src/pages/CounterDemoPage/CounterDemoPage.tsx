@@ -15,6 +15,13 @@ import {
   appState,
 } from '../../redux/reduxCounter';
 
+/**
+ * This page acts as a wrapper for the Counter component. The function to increment
+ * the redux state will be invoked here and prop passed into the Counter component.
+ *
+ * @category Pages
+ * @component
+ */
 const CounterDemoPage: React.FC = () => {
   const updateReduxState = (value: number = 0, reset:boolean = false) => {
     if (reset)
