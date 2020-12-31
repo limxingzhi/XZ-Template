@@ -53,6 +53,37 @@ In theory, page components are meant to act as wrappers. You can do data fetchin
 
 The goal of splitting Pages and Components into 2 distinct and logical categories is to split their responsiblities. For example, we can test our Components very easily without the need for hydrating a global state or do data-fetching since that is the responsibility of the Page. We can also normalize the fetched / global state data at the Page level and let it cascade down the tree rather than doing it at every single component.
 
+# Tests
+
+## Redux Tests
+
+The Redux store will be mocked. The following tests are created:
+1. Generating the correct action object for reset, increment and decrement
+2. Reducers are working correctly - state matches snapshots
+
+## Component Tests
+
+**Counter Component**
+1. Default render with blank `countChangeFunction` matches snapshot
+2. Clicking increment followed by decrement button calls `countChangeFunction` twice
+
+## Page Tests
+
+**Template**
+1. Default render with one div children matches snapshot
+2. Rendering with 2 children matches snapshot
+3. `title` prop is rendered
+4. `renderCallback` is called during render and when title changes
+5. `mountedCallback` is called during render only and **not** when title changes
+
+**Demo Page**
+1. Default render matches snapshot
+
+**Counter Demo Page**
+1. Default render wrapped with Provider matches snapshot
+2. Clicking the increment button increments the state by 1 after 0.5 seconds
+3. Clicking increment updates the red badge by 1 after 0.5 seconds
+
 # Others
 
 ## Available Scripts
