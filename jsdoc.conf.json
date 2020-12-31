@@ -1,13 +1,12 @@
 {
   "tags": {
-    "allowUnknownTags": true
+    "allowUnknownTags": ["component","category"]
   },
   "source": {
     "include": ["src"],
     "includePattern": ".+\\.(jsx|tsx|ts|js)?$"
   },
   "plugins": [
-    "better-docs",
     "node_modules/better-docs/category",
     "node_modules/better-docs/typescript",
     "node_modules/better-docs/component"

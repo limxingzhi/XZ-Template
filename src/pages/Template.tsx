@@ -24,14 +24,14 @@ interface Props {
  * for initial mount and for every rerender. Both callbacks
  * are implemented via useEffect.
  *
- * @category Page
+ * @category Template
  * @component
  * @param {(JSX.Element|JSX.Element[])} children The page content to display. This will be used in /src/page/index.tsx
  * @param {string} title Title of the page and window title
- * @param {renderCallback} function Function to call whenever the component renders
- * @param {renderCallbackCleanup} function Cleanup Function to call for component rendering
- * @param {mountedCallback} function Functionto call whenver the component is mounted
- * @param {mountedCallbackCleanup} function Cleanup Functionto call for component mounting
+ * @param {function} renderCallback Function to call whenever the component renders
+ * @param {function} renderCallbackCleanup Cleanup Function to call for component rendering
+ * @param {function} mountedCallback Functionto call whenver the component is mounted
+ * @param {function} mountedCallbackCleanup Cleanup Functionto call for component mounting
  */
 const Template: React.FC<Props> = (props) => {
   const {children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup} = props;
