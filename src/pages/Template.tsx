@@ -17,18 +17,18 @@ interface Props {
   mountedCallbackCleanup?: Function | undefined,
 }
 
-const Template: React.FC<Props> = ({ children, title = "", renderCallback, mountedCallback }) => {
-const Template: React.FC<Props> = ({children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup }) => {
-const Template: React.FC<Props> = ({children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup}) => {
+const Template: React.FC<Props> = (props) => {
+  const {children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup} = props;
   useEffect(()=> {
     if (mountedCallback) mountedCallback();
     if (mountedCallbackCleanup) return ()=> {mountedCallbackCleanup()};
-  });
+  // eslint-disable-next-line
+  }, []);
   useEffect(()=> {
     if (title !== '') changeDocumentTitle(title);
     if (renderCallback) renderCallback();
     if (renderCallbackCleanup) return ()=> {renderCallbackCleanup()};
-  }, [title, children, renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup]);
+  });
   return (
     <div className="page-template">
       <PageHeader title={title} className="page-template-header" />

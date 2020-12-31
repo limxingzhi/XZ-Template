@@ -1,6 +1,6 @@
 import React from 'react';
 import { unmountComponentAtNode, render } from "react-dom";
-import TestRenderer from 'react-test-renderer';
+import TestRenderer, {act} from 'react-test-renderer';
 import pretty from "pretty";
 import Template from './Template';
 import { PageHeader } from 'antd';
@@ -41,15 +41,27 @@ describe("Page Template", ()=> {
         <div key="1"/>
       </Template>);
 
-      // waits for half a second for store to update the props
-      // (to prevent react from optimizing the update)
-      setTimeout(()=> {
-        // the change in title should trigger a renderCallback
+      act(() => {
         testRenderer.update(<Template renderCallback={fn} title={title + ' updated'}>
           <div key="1"/>
         </Template>);
-        expect(fn).toHaveBeenCalledTimes(2);
-      }, 500);
+      });
+      expect(fn).toHaveBeenCalledTimes(2);
+    });
+
+    test('renderCallbackCleanup is called when prop changes', ()=> {
+      const fn = jest.fn();
+      const title= `I am a title`;
+      const testRenderer = TestRenderer.create(<Template renderCallbackCleanup={fn} title={title}>
+        <div key="1"/>
+      </Template>);
+
+      act(()=> {
+        testRenderer.update(<Template renderCallbackCleanup={fn} title={title + ' updated'}>
+          <div key="1"/>
+        </Template>);
+      });
+      expect(fn).toHaveBeenCalledTimes(1);
     });
 
     test('mountedCallback is called only once', async ()=> {
@@ -59,17 +71,34 @@ describe("Page Template", ()=> {
         <div key="1"/>
       </Template>);
 
-      // waits for half a second for store to update the props
-      // (to prevent react from optimizing the update)
-      setTimeout(()=> {
-        expect(fn).toHaveBeenCalledTimes(1);
-
-        // the change in title should not trigger a mountedCallback
+      act(()=> {
         testRenderer.update(<Template mountedCallback={fn} title={title + ' updated'}>
           <div key="1"/>
         </Template>);
-        expect(fn).toHaveBeenCalledTimes(1);
-      }, 500);
+      });
+      expect(fn).toHaveBeenCalledTimes(1);
+    });
+
+    test('mountedCallbackCleanup is called when component is removed', async ()=> {
+      const fn = jest.fn();
+      const title= `I am a title`;
+      const testRenderer = TestRenderer.create(<div><Template mountedCallbackCleanup={fn} title={title}>
+        <div key="1"/>
+      </Template></div>);
+
+      expect(fn).toHaveBeenCalledTimes(0);
+
+      act(()=> {
+        testRenderer.update(<div><Template mountedCallbackCleanup={fn} title={title + ' updated'}>
+          <div key="1"/>
+        </Template></div>);
+      });
+      expect(fn).toHaveBeenCalledTimes(0);
+
+      act(()=> {
+        testRenderer.update(<div></div>);
+      });
+      expect(fn).toHaveBeenCalledTimes(1);
     });
   });
 });
