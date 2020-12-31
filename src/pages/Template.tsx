@@ -12,17 +12,23 @@ interface Props {
   children: JSX.Element | JSX.Element[],
   title?: string,
   renderCallback?: Function | undefined,
+  renderCallbackCleanup?: Function | undefined,
   mountedCallback?: Function | undefined,
+  mountedCallbackCleanup?: Function | undefined,
 }
 
 const Template: React.FC<Props> = ({ children, title = "", renderCallback, mountedCallback }) => {
+const Template: React.FC<Props> = ({children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup }) => {
+const Template: React.FC<Props> = ({children, title = "", renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup}) => {
   useEffect(()=> {
     if (mountedCallback) mountedCallback();
+    if (mountedCallbackCleanup) return ()=> {mountedCallbackCleanup()};
   });
   useEffect(()=> {
     if (title !== '') changeDocumentTitle(title);
     if (renderCallback) renderCallback();
-  }, [title, children, renderCallback, mountedCallback]);
+    if (renderCallbackCleanup) return ()=> {renderCallbackCleanup()};
+  }, [title, children, renderCallback, mountedCallback, renderCallbackCleanup, mountedCallbackCleanup]);
   return (
     <div className="page-template">
       <PageHeader title={title} className="page-template-header" />
