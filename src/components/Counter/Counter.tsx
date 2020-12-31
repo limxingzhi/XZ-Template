@@ -17,6 +17,14 @@ interface CounterProps {
   countChangeFunction: Function
 }
 
+/**
+ * This Component passes a value to the countChangeFunction. Increment
+ * will pass 1, decrement will pass -1, but any number will work.
+ *
+ * @category Components
+ * @component
+ * @param {function} countChangeFunction Callback function to invoke whenever the increment or decrement button is pressed
+ */
 const Counter: React.FC<CounterProps> = ({ countChangeFunction }) => {
   const incrementHandler = (value: number) => (e: React.MouseEvent): void => {
     e.preventDefault();
