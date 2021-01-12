@@ -39,10 +39,10 @@
       "web-vitals": "^0.2.4"
     },
     "scripts": {
-      "start": "craco start",
-      "build": "craco build",
+      "start": "./node_modules/.bin/craco start",
+      "build": "./node_modules/.bin/craco build",
       "docs": "./node_modules/.bin/jsdoc ./README.md -c jsdoc.conf.json",
-      "test": "craco test",
+      "test": "./node_modules/.bin/craco test",
       "eject": "react-scripts eject"
     }
   }

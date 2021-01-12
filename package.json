@@ -1,6 +1,6 @@
 {
   "name": "cra-template-xz",
-  "version": "0.1.13",
+  "version": "0.1.16",
   "license": "MIT",
   "author": "Lim Xing Zhi <limxz97@gmail.com",
   "engines": {
@@ -59,10 +59,10 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "./node_modules/.bin/craco start",
+    "build": "./node_modules/.bin/craco build",
     "docs": "./node_modules/.bin/jsdoc ./README.md -c jsdoc.conf.json",
-    "test": "craco test",
+    "test": "./node_modules/.bin/craco test",
     "eject": "react-scripts eject",
     "template": "rm -r -f template && mkdir template && cp -r craco.config.js src/ public/ tsconfig.json README.md .editorconfig jsdoc.conf.json template/ && cp .gitignore template/gitignore",
     "publish": "npm publish --access public"
