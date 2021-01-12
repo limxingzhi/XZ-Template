@@ -1,6 +1,6 @@
 {
   "name": "cra-template-xz",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "license": "MIT",
   "author": "Lim Xing Zhi <limxz97@gmail.com",
   "engines": {
@@ -22,6 +22,7 @@
   "private": false,
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
+    "@craco/craco": "^5.9.0",
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -38,7 +39,6 @@
     "antd": "^4.8.6",
     "better-docs": "^2.3.2",
     "copy-webpack-plugin": "^6.3.2",
-    "craco": "0.0.3",
     "craco-less": "^1.17.1",
     "css-loader": "^5.0.1",
     "jsdoc": "^3.6.6",
