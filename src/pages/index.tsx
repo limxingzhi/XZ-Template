@@ -1,27 +1,13 @@
-import React, { lazy } from 'react';
-import Template from './Template';
+import { lazy } from "react";
+import Template from "./_Template/Template";
 
-interface PageProps {
-  renderCallback?: Function,
-  mountCallback?: Function,
-}
+const Main = lazy(() => import("./Main/Main"));
+const Hello = lazy(() => import("./Hello/Hello"));
 
-const Demo = lazy(() => import('./DemoPage/DemoPage'));
-const CounterDemo = lazy(() => import('./CounterDemoPage/CounterDemoPage'));
+const MainPage: React.FC = () => 
+  <Template index={0} title="Motivation and Architecture Design"><Main /></Template>;
 
-const DemoPage: React.FC<PageProps> = ({ renderCallback, mountCallback }) => (
-  <Template title="Welcome" renderCallback={renderCallback} mountedCallback={mountCallback}>
-    <Demo />
-  </Template>
-);
+const HelloPage: React.FC = () =>
+  <Template index={1} title="Happiness"><Hello /></Template>;
 
-const CounterDemoPage: React.FC<PageProps> = ({ renderCallback, mountCallback }) => (
-  <Template title="I am page two" renderCallback={renderCallback} mountedCallback={mountCallback}>
-    <CounterDemo />
-  </Template>
-);
-
-export {
-  DemoPage,
-  CounterDemoPage,
-};
+export { MainPage, HelloPage };
