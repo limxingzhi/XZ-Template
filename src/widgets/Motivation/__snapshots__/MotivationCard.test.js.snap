@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Motivation Card Widget Snapshot Matches 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-align-items-xs-center"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-6 MuiGrid-grid-lg-6"
+    >
+      <div
+        class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiCardContent-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom"
+          >
+            Design
+          </h6>
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"
+          >
+            This app skeleton design was loosely based around another design I made for a school project. It originates from the idea where it has to be incredibly easy to add in new functionality. If I were to pick a targeted audience for this, I will say its for students trying to quickly kick start a react project without having to set up a ton of boilerplate code like a navigation bar, routing, TypeScript support, determining how the app strucutre start should look like, all that boring stuff.
+            <br />
+            <br />
+            State management is also pre-configured with redux toolkit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
