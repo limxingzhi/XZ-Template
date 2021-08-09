@@ -24,6 +24,5 @@ yarn-error.log*
 
 # my ignores
 /docs
-/template
 
 .npmrc
