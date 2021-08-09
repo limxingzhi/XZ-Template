@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+jobs:
+  build_template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - name: npm ci
+        run: |
+          npm ci
+      - name: npx create-react-app new-app --template file:./
+        run: |
+          npx create-react-app new-app --template file:./
+          cd ./new-app
+      - name: npm run test
+        run: |
+          npm run test
+      - name: npm run build
+        run: |
+          npm run build
+      - name: rm -r -f ./new-app
+        run: |
+          cd ../
+          rm -r -f ./new-app
